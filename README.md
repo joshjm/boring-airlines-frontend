@@ -1,4 +1,4 @@
-view the site at https://joshjm.github.io/boring-airlines-frontend/
+view the site at https://boring-airlines-frontend.herokuapp.com/
 
 
 
