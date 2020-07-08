@@ -1,12 +1,7 @@
-import React, {Component}from 'react';
+import React from 'react';
 
-class Flights extends Component {
-    render(){    
+export default function Flights(){
     return(
-            <div>
-                Content
-            </div>
-        )
-    }
+        <h2>Flgth content</h2>
+    )
 }
-export default Flights;
