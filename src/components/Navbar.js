@@ -24,10 +24,10 @@ class Navbar extends Component{
                                      <Link to='/users' class="nav-link">Users</Link>
                                     </li>  
                                     <li class="nav-item">
-                                      <Link to='/serach' class="nav-link">serach</Link>
+                                      <Link to='/search' class="nav-link">Search</Link>
                                     </li>  
                                     <li class="nav-item">
-                                      <Link to='/airplanes' class="nav-link">airplanes</Link>
+                                      <Link to='/airplanes' class="nav-link">Airplanes</Link>
                                     </li>  
                                     <li class="nav-item">
                                       <Link to='/about' class="nav-link">About</Link>
