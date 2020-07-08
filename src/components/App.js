@@ -7,6 +7,7 @@ import Navbar from './Navbar'
 import Airplanes from './Airplanes'
 import Search from './Search'
 import Flights from './Flights'
+import Flight from './Flight'
 
 import {
   BrowserRouter as Router,
@@ -21,8 +22,7 @@ export default function App() {
 
         <Switch>
           <Route path="/about" component={About}/>
-            {/* <About /> */}
-          {/* </Route> */}
+
           <Route path="/users">
             <Users />
           </Route>
@@ -37,6 +37,11 @@ export default function App() {
           <Route path="/flights">
             <Flights/>
           </Route>
+
+          <Route path="/flight/:flightId"> 
+            <Flight/>
+          </Route>
+
           <Route path="/"> {/* KEEP ME AT THE BOTTOM */}
             <Home />
           </Route>
