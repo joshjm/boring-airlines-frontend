@@ -1,0 +1,46 @@
+import React from 'react';
+import './App.css';
+import Home from './Home'
+import Users from './Users'
+import About from './About'
+import Navbar from './Navbar'
+import Airplanes from './Airplanes'
+import Search from './Search'
+import Flights from './Flights'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route  
+} from "react-router-dom";
+
+export default function App() {
+  return (
+    <Router>
+        <Navbar/> {/* navbar always gets rendered */}
+
+        <Switch>
+          <Route path="/about" component={About}/>
+            {/* <About /> */}
+          {/* </Route> */}
+          <Route path="/users">
+            <Users />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+          
+          <Route path="/airplanes">
+            <Airplanes/>
+          </Route>
+
+          <Route path="/search">
+            <Search/>
+          </Route>
+          <Route path="/flights">
+            <Flights/>
+          </Route>
+        </Switch>
+
+    </Router>
+  );
+}
