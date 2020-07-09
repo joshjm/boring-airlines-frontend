@@ -10,15 +10,9 @@ class Searches extends Component {
         searches: []
       };
 
-<<<<<<< HEAD
-    const fetchSearches = (origin, destination) => { // call this with the names Brisbane or Sydney as origin or destination. 
+    const fetchSearches = (origin, destination) => { // call this with the names Brisbane or Sydney as origin or destination.
       axios.get(SERVER_URL+'/'+origin+'/'+destination).then((results) => {
-        this.setState({searches: results.data}); // TODO: to be fixed, call the correct data
-=======
-    const fetchSearches = () => {
-      axios.get(SERVER_URL).then((results) => {
         this.setState({searches: results.data});
->>>>>>> 1cd0b70ea3de44b7524766eff08bbcd88d9c4bd2
         setTimeout(fetchSearches, 6000);
       });
     }
@@ -49,13 +43,36 @@ class SearchForm extends Component {
   constructor() {
     super();
     this.state={content:''};
+    this.start=[];
+    this.end=[];
 
-    this._handleChange = this._handleChange.bind(this);
+    this._handleChangeStart = this._handleChangeStart.bind(this);
+    this._handleChangeEnd = this._handleChangeEnd.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
   }
 
-  _handleChange(event) {
-    this.setState({content: event.target.value});
+  _handleChangeStart(event) {
+    let options = event.target.options
+    let value;
+    for (let i=0; i<options.length; i++) {
+      if (options[i].selected) {
+        value = options[i].value;
+        console.log(value)
+      }
+    }
+    this.setState({value: value});
+  }
+
+  _handleChangeEnd(event) {
+    let options = event.target.options
+    let value;
+    for (let i=0; i<options.length; i++) {
+      if (options[i].selected) {
+        value = options[i].value;
+        console.log(value)
+      }
+    }
+    this.setState({value: value});
   }
 
   _handleSubmit(event) {
@@ -66,30 +83,30 @@ class SearchForm extends Component {
 
   render() {
     return (
-      <form onSubmit={ this._handleSubmit }>
+      <form>
         <label>
           From:
-          <select>
-            <option value="Sydney">Sydney</option>
-            <option value="Melbroune">Melbroune</option>
-            <option value="Brisbane">Brisbane</option>
-            <option value="Perth">Perth</option>
-            <option value="GA">GA</option>
+          <select onChange={ this._handleChangeStart }>
+            <option value="1">Sydney</option>
+            <option value="2">Melbourne</option>
+            <option value="3">Brisbane</option>
+            <option value="4">Perth</option>
+            <option value="5">GA</option>
           </select>
         </label>
         <label>
           To:
-          <select>
-            <option value="Sydney">Sydney</option>
-            <option value="Melbroune">Melbroune</option>
-            <option value="Brisbane">Brisbane</option>
-            <option value="Perth">Perth</option>
-            <option value="GA">GA</option>
+          <select onChange={ this._handleChangeEnd }>
+            <option value="1">Sydney</option>
+            <option value="2">Melbourne</option>
+            <option value="3">Brisbane</option>
+            <option value="4">Perth</option>
+            <option value="5">GA</option>
           </select>
         </label>
-        <input {/*onSubmit=fetchSearch()*/} type="submit" value="Search Flight" />
-        <input {/*onSubmit*/} type="submit" value="Cancel" />
-        <input {/*onSubmit*/} type="submit" value="Save" />
+        <input type="submit" value="Search Flight" onSubmit={ this._handleSubmit } />
+        <input type="submit" value="Cancel" />
+        <input type="submit" value="Save" />
       </form>
     )
   }
