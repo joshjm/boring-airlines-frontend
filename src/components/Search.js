@@ -12,7 +12,7 @@ class Searches extends Component {
 
     const fetchSearches = () => {
       axios.get(SERVER_URL).then((results) => {
-        this.setState({searches: results.data}); // TODO: to be fixed, call the correct data
+        this.setState({searches: results.data});
         setTimeout(fetchSearches, 6000);
       });
     }
@@ -24,17 +24,16 @@ class Searches extends Component {
 
   saveSearch(content) {
     axios.post(SERVER_URL, {content: content}).then((result) => {
-      this.setState({searches: [...this.state.searches, result.data]}); // TODO: to be fixed, call the correct results
+      this.setState({searches: [...this.state.searches, result.data]});
     });
   }
-
 
   render() {
     return (
       <div>
         <h1>Boring Airlines</h1>
         <SearchForm onSubmit={ this.saveSearch } />
-        <Gallery />
+        <Gallery searches={ this.state.searches }/>
       </div>
     );
   }
@@ -93,10 +92,11 @@ class SearchForm extends Component {
 const Gallery = (props) => {
   return (
     <div>
-      Search results coming soon.
+      <h3>Available Flights</h3>
+      { props.searches.map( (searches) => <p key={ searches.id }>{ searches.content }</p>)}
     </div>
-  )
-}
+  );
+};
 
 
 export default Searches;
