@@ -6,7 +6,7 @@ export default function Home(){
             <h1>Welcome!</h1>
             <h2> Let Boring Airlines be your first choice to transport you nowhere.</h2>
             
-            <img src='https://thehustle.co/wp-content/uploads/2019/11/header-1-1.gif'/>
+            <img src='https://thehustle.co/wp-content/uploads/2019/11/header-1-1.gif' alt="funny-gif" />
        </div>
     )
 }

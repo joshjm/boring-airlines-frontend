@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-const SERVER_URL = 'http://localhost:3001/search.json';
+const SERVER_URL = 'http://localhost:3001/search';
 
 class Searches extends Component {
   constructor() {
@@ -10,8 +10,8 @@ class Searches extends Component {
         searches: []
       };
 
-    const fetchSearches = () => {
-      axios.get(SERVER_URL).then((results) => {
+    const fetchSearches = (origin, destination) => { // call this with the names Brisbane or Sydney as origin or destination. 
+      axios.get(SERVER_URL+'/'+origin+'/'+destination).then((results) => {
         this.setState({searches: results.data}); // TODO: to be fixed, call the correct data
         setTimeout(fetchSearches, 6000);
       });
@@ -82,9 +82,9 @@ class SearchForm extends Component {
             <option value="GA">GA</option>
           </select>
         </label>
-        <input type="submit" value="Search Flight" />
-        <input type="submit" value="Cancel" />
-        <input type="submit" value="Save" />
+        <input {/*onSubmit=fetchSearch()*/} type="submit" value="Search Flight" />
+        <input {/*onSubmit*/} type="submit" value="Cancel" />
+        <input {/*onSubmit*/} type="submit" value="Save" />
       </form>
     )
   }
