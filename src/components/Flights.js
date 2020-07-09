@@ -23,7 +23,6 @@ class Flights extends Component{
     render(){
         return(
             <div>
-                <h2>Boring Airlines</h2>
                 <h3>Create a flight</h3>
                 <form>
                     <div class='form-group'>
@@ -50,17 +49,35 @@ class Flights extends Component{
                 </li>
                 </ul>
                 <h3>Flight Table:</h3>
-                {this.state.flights.map(function(flight){
-                    return(
-                    <ul>
-                        <li><p>{flight.id}</p></li>
-                        <li><p>{flight.flight_number}</p></li>
-                        <li><p>{flight.origin}</p></li>
-                        <li><p>{flight.destination}</p></li>
-                        <li><p>{flight.date}</p></li>
-                    </ul>
-                    )
-                })}
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Flight Number</th>
+                        <th scope="col">Origin</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.flights.map(function(flight){
+                            return(
+                            <tr>
+                                <td scope = 'col'>  {flight.id} </td>
+                                <td scope = 'col'>  {flight.flight_number} </td>
+                                <td scope = 'col'>  {flight.origin} </td>
+                                <td scope = 'col'>  {flight.destination} </td>
+                                <td scope = 'col'>  {flight.date} </td>
+                                 
+                                <td scope = 'col'> <Link to ={`/flight/${flight.id}`}> view/edit </Link> </td>
+
+                            </tr>
+                            )
+
+                        })}
+                    
+                    </tbody>
+                </table>
     
             </div>
         )
