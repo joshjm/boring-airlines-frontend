@@ -10,15 +10,9 @@ class Searches extends Component {
         searches: []
       };
 
-<<<<<<< HEAD
     const fetchSearches = (origin, destination) => { // call this with the names Brisbane or Sydney as origin or destination. 
       axios.get(SERVER_URL+'/'+origin+'/'+destination).then((results) => {
         this.setState({searches: results.data}); // TODO: to be fixed, call the correct data
-=======
-    const fetchSearches = () => {
-      axios.get(SERVER_URL).then((results) => {
-        this.setState({searches: results.data});
->>>>>>> 1cd0b70ea3de44b7524766eff08bbcd88d9c4bd2
         setTimeout(fetchSearches, 6000);
       });
     }
